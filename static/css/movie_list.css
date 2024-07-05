@@ -1,0 +1,32 @@
+/* body{
+    background: #053e5f 100%;
+} */
+.container{
+    margin-right: 200px;
+    margin-left: 200px;
+    /* border: 1px solid; */
+    
+}
+
+
+
+.card-flex{
+    display: flex;
+    margin-left: 3px;
+}
+.card-flex p{
+    width: 600px;
+}
+
+.card-flex a{
+    font-size: larger;
+    border: 1px solid;
+}
+.card-flex a:hover{
+    border-radius:20px;
+    background: #67db31;
+    width: 30px;
+}
+.card-about{
+    margin-left: 20px;
+}

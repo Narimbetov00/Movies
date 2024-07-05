@@ -1,5 +1,24 @@
-{% for i in movies %}
-    {{ i.name }}
-    <img src="{{ i.image.url }}" alt="image">
-    {{ i.realised_date }}
-{% endfor %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="card">
+            {% for i in movies %}
+            <div class="card-header">
+                <h2>{{ i.name }}</h2>
+                <div class="card-flex">
+                    <img src="{{ i.image.url }}" alt="image">
+                    <div class="card-about">
+                        <p>{{ i.description  }}</p>
+                        <a href="{{ i.trailer }}">Movie trailers</a>
+                        <h5>{{ i.realised_date }} | {{ i.category }}</h5>
+                    </div>
+                </div>
+            </div> 
+            <hr>
+            {% endfor %}   
+        </div>
+    </div>
+{% endblock content %}
+    
