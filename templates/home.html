@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <style>
+        html{
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            }
+        body{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'image/site.jpg' %}");
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+        }
+    </style>
+</head>
+<body>
+    <header class="header-sections">
+        <ul>
+            <li>
+                <a href="{% url 'movies' %}">Movies</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+               Your <b>{{ user.username | title }}</b>
+            </li>
+            {% else %}
+            <li>
+               <a href="#">Log In</a>
+            </li>
+            {% endif %}
+        </ul>
+    </header>
+</body>
+</html>

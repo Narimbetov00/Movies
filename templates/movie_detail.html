@@ -12,6 +12,18 @@
             <div class="card-footer">
                 <h3 class="card-footer">{{ movie.realised_date }} | {{ movie.category }}</h3>
                 <h3 class="card-footer"><a href="{{ movie.trailer }}">Movie trailers</a></h3>
+                {% if user.is_authenticated %}
+                    <h3 class="card-footer"><a href="{% url 'comments' movie.id %}">Add Comment</a></h3>
+                {% else %}
+                    <h3 class="card-footer"><a href="{% url 'login' %}">Add Comment</a></h3>
+                {% endif %}
+                {% for comment in movie.comments.all %}
+                    <b>{{comment.author}}</b>
+                    <p>{{ comment.text }}</p> 
+                    <p>{{ comment.date }}</p>  <br>
+                {% empty %}
+                    <p>Ele comment joq</p>
+                {% endfor %}
             </div>
         </div>
     </div>    

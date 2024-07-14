@@ -6,7 +6,7 @@
         <div class="card">
             {% for i in movies %}
             <div class="card-header">
-                <a href="{% url 'movie_detail' i.id %}"><h2>{{ i.name }}</h2></a>
+                <a href="{% url 'movie_detail' i.id %}"><h2><b>{{ i.name }}</b></h2></a>
                 <div class="card-flex">
                     <img src="{{ i.image.url }}" alt="image">
                     <div class="card-about">
