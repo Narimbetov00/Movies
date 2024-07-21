@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+    <div class="container">
+        <div class="card">
+            {% for cgy in movie_values %}
+                <div style="margin-top: 5px;" class="card-header">
+                    <a href="{% url 'movie_detail' cgy.id %}"><h2><b>{{ cgy.name }}</b></h2></a>
+                    <div class="card-flex">
+                        <img  class="img-itme" src="{{ cgy.image.url }}" alt="image">
+                        <div class="card-about">
+                            <p class="info-movie">{{ cgy.description  }}</p>
+                            <a class="link-item" target="_blank" href="{{ cgy.trailer }}">Movie trailers</a>
+                            <h5 >{{ cgy.realised_date }} | {{ cgy.category }}</h5>
+                        </div>
+                    </div>
+                </div> 
+                <hr><hr>
+                <div class="space"  ></div>
+                <hr><hr><hr>
+            {% endfor %}   
+        </div>
+    </div>
+
+{% endblock %}

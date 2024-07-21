@@ -1,24 +1,61 @@
 {% extends 'base.html' %}
 {% load static %}
-
+<link rel="stylesheet" href="{% static 'css/movie_list.css' %}">
 {% block content %}
-    <div class="container">
-        <div class="card">
-            {% for i in movies %}
+    <!-- <div class="container">
+        {% for i in movies %}
+        <div class="card" style="background-color: #1f293786">
             <div class="card-header">
-                <a href="{% url 'movie_detail' i.id %}"><h2><b>{{ i.name }}</b></h2></a>
+                <a style="color: #ffffff;" href="{% url 'movie_detail' i.id %}"><h2><b>{{ i.name }}</b></h2></a>
                 <div class="card-flex">
-                    <img src="{{ i.image.url }}" alt="image">
+                    <img class="img-itme" src="{{ i.image.url }}" alt="image">
                     <div class="card-about">
-                        <p>{{ i.description  }}</p>
-                        <a target="_blank" href="{{ i.trailer }}">Movie trailers</a>
-                        <h5>{{ i.realised_date }} | {{ i.category }}</h5>
+                        <p style="color: #ffffff;" class="info-movie">{{ i.description  }}</p>
+                        <a style="color: #ffffff;" class="link-item" target="_blank" href="{{ i.trailer }}">Movie trailers</a>
+                        <h5 style="color: #ffffff;" >{{ i.realised_date }} | {{ i.category }}</h5>
                     </div>
                 </div>
             </div> 
-            <hr>
+            <hr style="background-color: azure;"></hr> 
             {% endfor %}   
         </div>
+    </div> -->
+
+    {% for i in movies %}
+        <!-- <div class="p-5 mb-4 rounded-3" >
+            <div class="container-fluid py-5" style="padding: 100px; background-color: rgba(87, 119, 152, 0.457);">
+                <h1 class="display-5 fw-bold" style="text-decoration-color: aliceblue;"><a href="{% url 'movie_detail' i.id %}">{{i.name}}</a></h1>
+                <div style="display: flex; margin-top: 10px;">
+                    </a><img src="{{i.image.url}}" alt="{{i.name}}" style="width: 410px; height: 500px;">
+                    <div>
+                        <p class="col-md-8 fs-4" style="width: 500px; margin-left: 30px;">{{i.description|slice:":500"}}...</p>
+                        <p class="col-md-8 fs-4" style="margin:10px 30px 0px ;"> {{i.realised_date}}</p>
+                    </div>
+                </div>
+        </div>
+    </div> -->
+    <div  class="container">
+        <div class="p-5 mb-4 rounded-3" style="background-color: #1f29379d; color: #ffffff;">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold" style="text-decoration-color: aliceblue;">
+                    <a href="{% url 'movie_detail' i.id %}">{{ i.name }}</a>
+                </h1>
+                <div class="row mt-4">
+                    <div class="col-12 col-md-4">
+                        <img src="{{ i.image.url }}" alt="{{ i.name }}" class="img-fluid" style="height: 100%;width: 410px; object-fit: cover;">
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <p class="fs-4">{{ i.description|slice:":500" }}...</p>
+                        <p class="fs-4">{{ i.realised_date }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endfor %}
+
 {% endblock content %}
     

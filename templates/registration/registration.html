@@ -1,8 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-6 col-lg-4">
+            <div style="background-color: #1f29379d; color: #ffffff; border-radius: 10px;"   class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Sign Up</h3>
+                    <form action="{% url 'registration' %}" method="post">
+                      {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label> <br>
+                            <!-- <input type="text" class="form-control" id="name" placeholder="Your Name" required> -->
+                            <h1 class="form-control" id="name" style="font-size: 20px;">{{ form.username }}</h1>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label> <br>
+                            <!-- <input type="email" class="form-control" id="email" placeholder="name@example.com" required> -->
+                            <h1 class="form-control"  style="font-size: 20px; " >{{ form.email }} </h1>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label> <br>
+                            <!-- <input type="password" class="form-control" id="password" placeholder="Password" required> -->
+                            <h1 class="form-control" style="font-size: 20px; " >{{ form.password1 }}</h1> 
+                        </div>
+                        <div class="mb-3">
+                          <label for="password" class="form-label">Password confirm</label> <br>
+                          <!-- <input type="password" class="form-control" id="password" placeholder="Password" required> -->
+                          <h1 class="form-control" style="font-size: 20px; " >{{ form.password2 }} </h1>
+                      </div>
+                      {{ form.errors }}
+                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<form method="post">
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+<!-- 
+test ushin islengen registration -->
+
+
+<!-- <form method="post">
     {% csrf_token %}
     {{form.as_p}}
     
@@ -32,6 +76,7 @@
         <br><br>
         <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Jiberiw</button>
     </form>
-</div>
+</div> -->
+
 
 {% endblock content %}

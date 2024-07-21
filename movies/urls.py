@@ -13,4 +13,5 @@ urlpatterns = [
     path('login/',LoginView.as_view(),name='login'),
     path('logout/',logoutpage,name='logout'),
     path('<int:id>/comment/',commmentView,name='comments'),
+    path('category/<str:category_slug>/',movie_list,name='category')
 ]

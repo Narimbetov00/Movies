@@ -16,12 +16,25 @@ def movie_list(request,category_slug=None):
     movies = Movies.objects.all()
     if category_slug:
         category = get_object_or_404(Category,slug = category_slug)
+        movies = movies.filter(category=category)
     return render(request,'movie_list.html',{
                       'category':category,
                       'categories':categories,
                       'movies':movies
                       })
 
+# def category(request,slug):
+#     category = get_object_or_404(Category,slug=slug)
+#     categoryId = Category.objects.all().get(slug=slug)
+#     category_id=categoryId['id']
+#     if category:
+#         movies = Movies.objects.all().values()
+#         movie_values = movies.filter(category_id=category_id)
+#         context = {
+#             'movie_values':movie_values,
+#             'slug':slug,
+#         }   
+#     return render(request,'movie_category.html',context)
 
 def movie_detail(request,id):
     movie = get_object_or_404(Movies,id=id)
@@ -77,8 +90,6 @@ def commmentView(request,id):
 def srcView(request):
     if request.method == 'GET':
         text = request.GET['src']
-        print(text)
-        
         obj= Movies.objects.all().values()
         movie_src = obj.get(name=text)
         movie_srclist = list(movie_src)
